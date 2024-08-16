@@ -1,16 +1,20 @@
 ##AWS Resources with Terraform, Jenkins ci-cd, and Hosting a static website in s3##
+
+
 ![project-overview](https://github.com/user-attachments/assets/c12d48ff-5b94-467a-a181-0cec068dbcbc)
-Project Overview
+
+##Project Overview
 This project demonstrates how to automate infrastructure provisioning using Terraform and Jenkins with AWS. It covers setting up a fully automated environment to host a static website, along with configuring essential DevOps tools.
 
-Key Objectives
+##Key Objectives
 Setup: Installation of Terraform, Jenkins, Docker, and Trivy on an AWS EC2 instance.
 Terraform Scripts: Provisioning AWS resources and managing infrastructure with Terraform.
 User Data: Automating container launches within AWS instances using user data.
 Static Website Hosting: Automating static website deployment with Terraform.
 State Management: Configuring S3 for Terraform state storage and DynamoDB for locking.
 Jenkins Integration: Automating Terraform provisioning and state management with Jenkins.
-Prerequisites
+
+##Prerequisites
 AWS Account
 EC2 instance (Ubuntu 22.04 T2 Large)
 S3 Bucket for Terraform state
@@ -23,6 +27,7 @@ Install Docker and Trivy: Setup Docker and run a SonarQube container; install Tr
 Configure Jenkins: Install necessary plugins (JDK, SonarQube Scanner, Terraform) and set up global tools.
 Integrate Terraform: Use Terraform scripts for AWS resource provisioning and state management.
 Jenkins Pipeline: Configure Jenkins pipelines to automate the deployment process.
+
 #Outputs
 Jenkins: Pipeline execution and build status.
 Docker: Container deployment and status.
