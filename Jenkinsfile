@@ -4,15 +4,18 @@ pipeline{
         jdk 'jdk17'
         terraform 'terraform'
     }
-    stages{
-        stage('clean Workspace'){
+    environment {
+        SCANNER_HOME=tool 'sonar-scanner'
+    }
+    stages {
+        stage('clean workspace'){
             steps{
                 cleanWs()
             }
         }
-        stage('checkout from Git'){
+        stage('Checkout from Git'){
             steps{
-                git branch: 'main', url: 'https://github.com/Aj7Ay/TERRAFORM-JENKINS-CICD.git'
+                git branch: 'main', url: 'https://github.com/Hruday-Kolipaka/Terraform-Jenkins-CI-CD.git'
             }
         }
         stage('Terraform version'){
@@ -31,17 +34,17 @@ pipeline{
         stage("quality gate"){
            steps {
                 script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
                 }
-            } 
+            }
         }
         stage('TRIVY FS SCAN') {
             steps {
                 sh "trivy fs . > trivyfs.txt"
             }
         }
-        stage('Excutable permission to userdata'){
-            steps{
+        stage('Executable Permissions to Website file') {
+            steps {
                 sh 'chmod 777 website.sh'
             }
         }
@@ -55,10 +58,10 @@ pipeline{
                 sh 'terraform plan'
             }
         }
-        stage('Terraform apply'){
+        stage('Terraform action'){
             steps{
-                sh 'terraform ${action} --auto approve'
+                sh 'terraform ${action} --auto-approve'
             }
-        }
-    }
+        }
+    }
 }
